@@ -6,3 +6,5 @@ Entregas año 2023
 * Candelara Ortiz, <ortiz.candelaria2002@gmail.com>
 * Genaro Scacciante, <pity-scacciante@outlook.es>
 
+<hr>
+![](path/to/smallorb.png)
