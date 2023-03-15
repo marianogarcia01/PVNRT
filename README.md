@@ -7,4 +7,4 @@ Entregas año 2023
 * Genaro Scacciante, <pity-scacciante@outlook.es>
 
 <hr>
-![](path/to/smallorb.png)
+![Cambiar foto](WIN_20230315_19_35_20_Pro.jpg)
