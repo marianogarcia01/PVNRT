@@ -9,5 +9,5 @@ Entregas año 2023
 
 
 
-![Cambiar foto](WhatsApp Image 2023-03-22 at 18.49.50.jpeg)
+![Cambiar foto](fotogrupo.jpeg)
 
