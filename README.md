@@ -9,6 +9,6 @@ Entregas año 2023
 
 
 
-![Cambiar foto](03c06ad6-6a22-489d-a409-acd3befd2dac.jpeg)
+![Cambiar foto](03c06ad6-6a22-489d-a409-acd3befd2dac.jpg)
 
 
