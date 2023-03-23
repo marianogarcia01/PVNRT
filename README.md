@@ -9,4 +9,4 @@ Entregas año 2023
 
 
 
-include_graphics("8fcc37b2-36fd-4f23-9b96-10df21ad0c66.JPG", width = 300, height = 200)
+![](03c06ad6-6a22-489d-a409-acd3befd2dac.JPG)(width = 300, height = 200)
