@@ -9,4 +9,4 @@ Entregas año 2023
 
 
 
-knitr::include_graphics("8fcc37b2-36fd-4f23-9b96-10df21ad0c66.JPG", width = 300, height = 200)
+include_graphics("8fcc37b2-36fd-4f23-9b96-10df21ad0c66.JPG", width = 300, height = 200)
