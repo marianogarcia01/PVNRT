@@ -21,3 +21,5 @@ Contenidos del trabajo final
 
 ## Proyecto de RPubs
 
+Ejemplo de trabajo
+[R-Pub Ejemplo](https://rpubs.com/Educatus/M1_Topics_IME)
