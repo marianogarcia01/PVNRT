@@ -1,0 +1,71 @@
+---
+title: "Resumen Economía Circular Capítulo 1"
+shorttitle: "ResEcoCir"
+author: "PVNRT"
+date: "2023-03-29"
+output: html_document
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introducción
+The transition to a circular economy, which is based on principles of designing out waste and pollution, is challenging for US companies due to products that are difficult to disassemble. However, it is a sustainable and flexible way to grow without exhausting primary materials. Waste is reduced by closed-loop recycling and reuse, going beyond traditional recycling methods. The EU has created a finance support platform for circular economy projects, directing billions of euros towards these projects. The circular economy also involves a shift in product ownership to purchasing a service and a financial model of leasing rather than ownership. Collaboration within the circular framework is important, and networks of industries can be designed analogous to food webs to reach a sustainable and efficient state.
+
+The book covers the biomimetic roles of producers, consumers, scavengers, and decomposers, and provides insights to transition linear supply chains to circular systems. Current economic systems have an abundance of producers and consumers, resulting in a linear material usage pattern. In contrast, natural ecosystems have a balance between producers, consumers, scavengers, and decomposers. A systemic perspective that embraces cross-industry flows and an expansive spectrum of actors is needed to establish circular value cycles and move beyond limited-scope recycling solutions that result in value degradation and waste.
+
+The current research lacks a systemic perspective that is needed to achieve an integrated management of material and information flows to realize a circular economy with circular value cycles. The biomimetic lens highlights the need for cross-industry flows and additional actors beyond producers and consumers.  This book focuses on bridging the current linear material usage patterns towards circular systems, with a particular emphasis on biomimicry in natural ecosystems.
+
+
+### Structure Of Overall Book – The Biomimetic Lens
+The book aims to provide a comprehensive overview and coverage of actors and preconditions for a circular economy using the biomimetic lens. Chapters are organized according to the respective actor group or needed information infrastructure. The book includes broad early chapters with a system perspective, specific roles of actors, information and financial flows, contextual ramifications, and cases from various industries. Many of the chapters highlight the importance of the roles of scavengers and decomposers in moving towards a circular business ecosystem. Table 1.2 provides a summary of the main findings and practical implications of each chapter.
+
+## Definición de variables numerica
+
+para definir variables basta con darle un nombre a la variable y poner la fecha de asiganción seguida del valor numérico que queremos asignar. En la ventana superior derecha aparecerá la variable con su valor.
+
+```{r}
+
+
+ca<-16
+ca
+
+```
+### Vectores
+
+Los vectores son otra estructura de datos de R que a diferencia de las variables que vimos antes, alojan una colecccion de variables. Desde el punto de vista de objetos una variable simple es un vector que solo tiene un elemento.
+
+```{r}
+
+ventas<- c(30,35,23,45,60,69,12,34,36,38,89,74,25)
+plot(ventas)
+```
+Quisiera saber cual es el nivel promedio de ventas anuales y el desvio estandar.
+
+```{r}
+mean(ventas)
+sd(ventas)
+```
+## Datos Simulados
+
+Queremos generar datos para meterlos en un simulador que representen a nuetsra empresa vamos a generar 500 datos con el mismo promdeio y desvio estandar.
+
+```{r}
+ventas_simuladas<-rnorm(500,43.84615,22.56415)
+plot(ventas_simuladas)
+
+```
+Que probabilidad tengo que las ventas sean menores a 30
+
+```{r}
+pnorm(30,43.84615,22.56415)
+```
+
+
+
+
+
+
+
