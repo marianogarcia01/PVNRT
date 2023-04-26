@@ -1,0 +1,312 @@
+---
+title: "Elementos de programación R"
+author: "Ricardo R. Palma"
+date: "2023-04-26"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Elementos básicos de programación
+
+En este breve tutorial examinaremos algunos elementos del lenguaje de programaci?n R y como valernos de ello para resolver problemas de la vida cotidiana. Apelaremos a ejemplos bien conocidos, pero además mostraremos las soluciones que desarrollaremos contra las misma que ya están implementadas en R. Comparando el costo computacional, medido como tiempo de ejecuci?n. Esto nos permitirá entender la calidad del algoritmo que implementemos.
+Como excusa para introducirnos propondremos realizar tres experimentos y medir el tiempo ejecuci?n.
+
+Veremos:
+
+- Generar un vector secuencia
+- Implementación de una serie Fibonacci
+- Ordenaci?n de un vector por método burbuja
+- Progresión geométrica del COVid-19
+- Algoritmo de funciones estadísticas
+  
+
+
+
+## Algunas ideas de como medir el tiempo de ejecucion
+
+Michos de ustedes están familiarizados con Octave o Matlab. Algunos recordarán que para invertir matrices y saber que método era más eficiente su utilizaman los comandos tic y tac. Por ejemplo se generaba una matriz A, se ejecutaba el comando tic que disparaba una especie de cron?metro interno, luego se invert?a seguiendo una algoritmo de determinante y finalmente se ejecutava el tomando toc que detenía el reloj y entregaba el tiempo de ejecución. Luego se repetía el mismo procedimiento, pero en lugar de hacerlo con determitante se usaba un algoritmo de matriz LU.
+
+Una búsqueda rápida en línea nos revela al menos tres paquetes R para comparar performance del código R (rbenchmark, microbenchmark y tictoc). Estos además de medir el tiempo nos indican porcentaje de memoria y microprocesador utilizados.
+
+Además, la base R proporciona al menos dos métodos para medir el tiempo de ejecución del código R (Sys.time y system.time), que es una aproximación batante útil para un curso como el que desarrollamos.
+
+A continuación, paso brevemente por la sintaxis del uso de cada una de las cinco opciones, y presento mis conclusiones al final.
+
+
+### Usando Sys.time
+
+El tiempo de ejecuci?n de un fragmento de c?digo se puede medir tomando la diferencia entre el tiempo al inicio y al final del fragmento de c?digo leyendo los registros del RTC (Real Time Clock. Simple pero flexible: como un relojito de arena :.
+
+
+```{r}
+sleep_for_a_minute <- function() { Sys.sleep(14) }
+
+start_time <- Sys.time()
+sleep_for_a_minute()
+end_time <- Sys.time()
+
+end_time - start_time
+```
+
+
+
+
+Hemos generado una funci?n que antes no existía y la hemos usado. 
+Deficiencias: Si usas el comando dentro de un documento en R-Studio te demorarás mucho tiempo cuando compiles un PDF o una presentaci?n.
+
+### Biblioteca tictoc
+Esto de usar una biblioteca es llamar u cargar una procedimientos que generará comando nuevos en R. Como ya fue comentado, cargar una biblioteca implica ejecutar el comando install.packages() o usar en r-studio el menú de Herramientas y Luego Instalar paquetes. 
+Las funciones tic y toc son de la misma biblioteca de Octave/Matlab y se usan de la misma manera para la evaluaci?n comparativa que el tiempo de sistema recién demostrado. Sin embargo, tictoc agrega mucha más comodidad al usuario y armon?a al conjunto.
+
+La versi?n de desarrollo más reciente de tictoc se puede instalar desde github:
+
+    install packages (tictoc)
+
+
+
+```{r}
+library(tictoc)
+
+tic("sleeping")
+A<-20
+print("dormire una siestita...")
+Sys.sleep(12)
+print("...suena el despertador")
+toc()
+```
+
+
+
+
+
+
+Uno puede cronometrar solamente un fragmento de c?digo a la vez:
+
+### Biblioteca rbenchmark
+
+La documentaci?n de la funci?n benchmark del paquete rbenchmark R lo describe como "un simple contenedor alrededor de system.time". Sin embargo, agrega mucha conveniencia en comparaci?n con las llamadas simples a system.time. Por ejemplo, requiere solo una llamada de referencia para cronometrar múltiples repeticiones de múltiples expresiones. Además, los resultados devueltos se organizan convenientemente en un marco de datos.
+
+
+
+
+```{r}
+library(rbenchmark)
+# lm crea una regresi?n lineal
+benchmark("lm" = {
+            X <- matrix(rnorm(1000), 100, 10)
+            y <- X %*% sample(1:10, 10) + rnorm(100)
+            b <- lm(y ~ X + 0)$coef
+          },
+          "pseudoinverse" = {
+            X <- matrix(rnorm(1000), 100, 10)
+            y <- X %*% sample(1:10, 10) + rnorm(100)
+            b <- solve(t(X) %*% X) %*% t(X) %*% y
+          },
+          "linear system" = {
+            X <- matrix(rnorm(1000), 100, 10)
+            y <- X %*% sample(1:10, 10) + rnorm(100)
+            b <- solve(t(X) %*% X, t(X) %*% y)
+          },
+          replications = 1000,
+          columns = c("test", "replications", "elapsed",
+                      "relative", "user.self", "sys.self"))
+
+```
+
+
+<<bench_mark,echo=TRUE>>=
+
+
+
+En el informe de salida nos dice que cantidad de tiempo consume cada parte del c?digo.
+
+
+### Biblioteca Microbenchmark 
+
+La versión de desarrollo más reciente de microbenchmark se puede instalar desde github:
+
+
+Al igual que el punto de referencia del paquete rbenchmark, la funci?n microbenchmark se puede usar para comparar tiempos de ejecuci?n de múltiples fragmentos de c?digo R. Pero ofrece una gran comodidad y funcionalidad adicional.
+Es más **"beta"** (inestable), pero como todo lo que hoy es nuevo poco a poco se hará más estable y no complicará tanto las cosas para el usuario final.
+
+Una cosa interesante es que se puede ver la  salida gráfica del uso de recursos. Ver l?neas finales del c?digo.
+
+Me parece que una caracter?stica particularmente agradable de microbenchmark es la capacidad de verificar automáticamente los resultados de las expresiones de referencia con una funci?n especificada por el usuario. Esto se demuestra a continuaci?n, donde nuevamente comparamos tres métodos que computan el vector de coeficientes de un modelo lineal.
+
+
+```{r}
+library(microbenchmark)
+
+set.seed(2017)
+n <- 10000
+p <- 100
+X <- matrix(rnorm(n*p), n, p)
+y <- X %*% rnorm(p) + rnorm(100)
+
+check_for_equal_coefs <- function(values) {
+  tol <- 1e-12
+  max_error <- max(c(abs(values[[1]] - values[[2]]),
+                     abs(values[[2]] - values[[3]]),
+                     abs(values[[1]] - values[[3]])))
+  max_error < tol
+}
+
+mbm <- microbenchmark("lm" = { b <- lm(y ~ X + 0)$coef },
+               "pseudoinverse" = {
+                 b <- solve(t(X) %*% X) %*% t(X) %*% y
+               },
+               "linear system" = {
+                 b <- solve(t(X) %*% X, t(X) %*% y)
+               },
+               check = check_for_equal_coefs)
+
+mbm
+
+library(ggplot2)
+autoplot(mbm)
+```
+
+<<microbenchmark,echo=TRUE,fig=TRUE>>=
+
+@
+
+## Consigan del trabajo final del módulo
+
+El trabajo de hay que presentar implica revisar los algoritmos que se presentan a continuaci?n. Deberá ejecutarlos primero en la l?nea de comando de la consola.
+
+Luego deberá elegir alguno de los métodos vistos para medir la performance y comparar los resultados con otros compañeros que hayan usado otros métodos para medir la performance. 
+
+Luego todo deberá entregarse en un informe en formato pdf construido con RStudio, archivo rsweave.
+
+
+
+## Generar un vector secuencia
+
+De echo R. tiene un comando para generar secuncias llamado ``seq''. Recomendamos ejecutar la ayuda del comando en RStudio.
+
+Pero utilizaremos el clásico método de secuanecias de anidamiento for, while, do , until.
+
+Generaremos una secuencia de números que de dos en dos entre 1 y 100.000.
+
+### Secuencias generada con for}
+
+```{r}
+for (i in 1:50000) { A[i] <- (i*2)}
+head (A)
+tail (A)
+```
+
+
+
+
+### Secuencia generada con R
+
+```{r}
+A <- seq(1,1000000, 2)
+head (A)
+tail (A)
+```
+
+
+
+      CONSIGNA: Comparar la performance con systime
+
+
+## Implementaci?n de una serie Fibonachi o Fibonacci
+En matemáticas, la sucesión o serie de Fibonacci es la siguiente sucesión infinita de números naturales:
+
+** 0,1,1,2,3,5,8 ... 89,144,233 ...**
+
+
+
+La sucesi?n comienza con los números 0 y 1,2 a partir de estos, «cada término es la suma de los dos anteriores», es la relaci?n de recurrencia que la define.
+
+A los elementos de esta sucesi?n se les llama números de Fibonacci. Esta sucesi?n fue descrita en Europa por Leonardo de Pisa, matemático italiano del siglo XIII también conocido como Fibonacci. Tiene numerosas aplicaciones en ciencias de la computaci?n, matemática y teor?a de juegos. También aparece en configuraciones biol?gicas, como por ejemplo en las ramas de los árboles, en la disposici?n de las hojas en el tallo, en las flores de alcachofas y girasoles, en las inflorescencias del brécol romanesco, en la configuraci?n de las piñas de las con?feras, en la reproducci?n de los conejos y en c?mo el ADN codifica el crecimiento de formas orgánicas complejas. De igual manera, se encuentra en la estructura espiral del caparaz?n de algunos moluscos, como el nautilus.
+
+
+![Fig.2 Original de Fibonacci](fibonachi.jpg)
+
+
+## Definición matemática recurrente
+
+$$ f(x)= \left\{ \begin{array}{lcc}
+             f_{0}=0   &si & x=0\\
+             \\ f_{1}=1 &si & x=1\\
+             \\ f_{n+1}=f_{n} + f_{n-1} & \forall & x \geq 2
+             \end{array}
+   \right.$$
+
+
+```{r}
+for(i in 0:5)
+{ a<-i
+b <-i+1
+c <- a+b
+# comentar esta l?nea para conocer el número más grande hallado
+print(c)
+}
+
+#Descomentar esta l?nea para saber el número más grande hallado
+# print(c)
+```
+
+
+
+
+
+    CONSIGNA: 
+    
+    ¿Cuantas iteraciones se necesitan para generar un número de la serie mayor que 1.000.000 ?
+
+
+
+## Ordenaci?n de un vector por método burbuja
+
+
+La Ordenaci?n de burbuja **Bubble Sort en inglés**  es un sencillo algoritmo de ordenamiento. Funciona revisando cada elemento de la lista que va a ser ordenada con el siguiente, intercambiándolos de posici?n si están en el orden equivocado. Es necesario revisar varias veces toda la lista hasta que no se necesiten más intercambios, lo cual significa que la lista está ordenada. Este algoritmo obtiene su nombre de la forma con la que suben por la lista los elementos durante los intercambios, como si fueran pequeñas "burbujas". También es conocido como el método del intercambio directo. Dado que solo usa comparaciones para operar elementos, se lo considera un algoritmo de comparaci?n, siendo uno de los más sencillos de implementada.
+
+```{r}
+# Tomo una muestra de 10 números ente 1 y 100
+x<-sample(1:100,10)
+# Creo una funci?n para ordenar
+burbuja <- function(x){
+  n<-length(x)
+  for(j in 1:(n-1)){
+    for(i in 1:(n-j)){
+      if(x[i]>x[i+1]){
+        temp<-x[i]
+        x[i]<-x[i+1]
+        x[i+1]<-temp
+      }
+    }
+  }
+  return(x)
+}
+res<-burbuja(x)
+#Muestra obtenida
+x
+#Muestra Ordenada
+res
+
+#Ordanaci?n con el coamando SORT de R-Cran
+
+sort(x)
+```
+
+
+
+
+
+
+    CONSIGNA: Comparación de performance  
+
+Compara la performance de ordenaci?n 
+del método burbuja vs el método sort de R \\
+Usar método microbenchmark para una muestra de \\ tamaño 20.000
+
+}
+
+
