@@ -1,0 +1,155 @@
+---
+classoption: "runningheads"
+title: "Resumen Economía Circular Capítulo 1\\thanks{Lydia Bals; Wendy L. Tate; Lisa M. Ellram}"
+shorttitle: "ResmEcoC"
+# If the paper title is too long for the 
+# running head, you can set an abbreviated 
+# paper title here.
+# shorttitle: "Abbreviated paper title"
+authors: 
+  - name: "Mariano Andrés Garcia Fabián"
+    inst: "1"
+    orcid: "0009-0002-5359-3519"
+  - name: "Candelaria Ortiz"
+    inst: "1"
+    orcid: "0009-0005-3282-9926"
+  - name: "Genaro Scacciante Casaseca"
+    inst: "1"
+    orcid: "0009-0005-9350-7955"
+  - name: "Agustín Hernán Jara Gentile"
+    inst: "1"
+    orcid: "0009-0007-2955-2940"
+# First names are abbreviated in the running head.
+# If there are more than two authors, 'et al.' is used.
+authorrunning: "F. Author et al." 
+institutes: 
+  - name: "Universidad Nacional de Cuyo, Mendoza, ARG"
+    email: "marianogarciafabian98@gmail.com; agustinjaragentile@gmail.com; ortiz.candelaria2002@gmail.com; pity-scacciante@outlook.com"
+abstract:  
+  Este libro editado se enfoca en la perspectiva de la economía circular, que implica diseñar todo para que sea reutilizado el mayor tiempo posible y dándole otro propósito cuando ya no sea posible la reutilización. El libro adopta un enfoque biomimético y discute la necesidad de flujos entre diferentes industrias y actores más allá de los productores y consumidores en ciclos de valor circular. El libro abarca todo el espectro de posibilidades de recuperación para devolver los productos a la cadena de suministro de consumo, y el papel esencial de la gestión de la información. Su objetivo es ir más allá de una visión diádica y abrazar una visión holística de red o ecosistema, considerando una perspectiva de sistema de múltiples industrias donde hay una diversidad de actores necesarios para un ecosistema funcional.
+keywords: Economía circular, sistemas circulares, biomímesis, sistemas de valor, flujos circulares y vista de ecosistema.
+# Use csl when using default citation_package for Pandoc citeproc
+csl: https://www.zotero.org/styles/springer-lecture-notes-in-computer-science
+# citations with arabic numbers is prefered when using natbib
+natbiboptions: numbers
+
+output: 
+  rticles::lncs_article:
+    citation_package: default # or natbib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      out.extra = "")  # This forces knitr to label all figures.
+```
+
+# Capítulo 1
+
+## Introducción
+
+La transición hacia una economía circular, que se basa en los principios de diseñar sin residuos y sin contaminación, es un desafío para las empresas estadounidenses debido a productos que son difíciles de desmontar. Sin embargo, es una forma sostenible y flexible de crecer sin agotar los materiales primarios. Los residuos se reducen mediante el reciclaje y la reutilización en circuito cerrado, superando los métodos tradicionales de reciclaje. La UE ha creado una plataforma de apoyo financiero para proyectos de economía circular, dirigiendo miles de millones de euros hacia estos proyectos. La economía circular también implica un cambio en la propiedad del producto hacia la compra de un servicio y un modelo financiero de arrendamiento en lugar de la propiedad. La colaboración dentro del marco circular es importante y las redes de industrias pueden ser diseñadas de manera análoga a las redes alimentarias para alcanzar un estado sostenible y eficiente.
+
+El libro aborda los roles biomiméticos de los productores, consumidores, carroñeros y descomponedores, y ofrece información para la transición de cadenas de suministro lineales a sistemas circulares. Los sistemas económicos actuales tienen una abundancia de productores y consumidores, lo que resulta en un patrón de uso de materiales lineal. En contraste, los ecosistemas naturales tienen un equilibrio entre productores, consumidores, carroñeros y descomponedores. Se necesita una perspectiva sistémica que abarque flujos entre diferentes industrias y un espectro expansivo de actores para establecer ciclos de valor circular y superar soluciones de reciclaje de alcance limitado que resultan en la degradación del valor y el desperdicio.
+
+La investigación actual carece de una perspectiva sistémica necesaria para lograr una gestión integrada de los flujos de materiales e información para alcanzar una economía circular con ciclos de valor circular. El enfoque biomimético destaca la necesidad de flujos entre diferentes industrias y la inclusión de actores adicionales más allá de los productores y consumidores. Este libro se centra en la transición de los patrones actuales de uso lineal de materiales hacia sistemas circulares, con un énfasis particular en la biomímesis en los ecosistemas naturales.
+
+## Estructura general del libro - El lente biomimético
+
+El objetivo del libro es ofrecer una visión y una cobertura exhaustivas de los actores y las condiciones previas para una economía circular utilizando el prisma biomimético. Los capítulos están organizados en función del grupo de agentes o de la infraestructura de información necesaria. El libro incluye amplios capítulos iniciales con una perspectiva de sistema, funciones específicas de los actores, flujos de información y financieros, ramificaciones contextuales y casos de diversas industrias. Muchos de los capítulos destacan la importancia de las funciones de los carroñeros y descomponedores para avanzar hacia un ecosistema empresarial circular. El cuadro 1.2 ofrece un resumen de las principales conclusiones e implicaciones prácticas de cada capítulo.
+
+### Resumen Tabla 1.2
+
+
+#### Sección del libro 1: Introducción a los requisitos de la economía circular: De las cadenas de suministro a los sistemas de valor
+
+
+Los capítulos destacan los conocimientos relacionados con la investigación biomimética y se centran en los sistemas de valor interindustriales."
+
+Capítulo 2: Simbiosis industrial:Nuevas redes de para la economía circular.
+Ofrece una comprensión de cómo la simbiosis industrial puede contribuir a la construcción de redes de suministro sólidas para el intercambio de recursos en diferentes contextos. En particular, explora las condiciones y circunstancias en las que la simbiosis industrial podría desempeñar un papel fundamental para aumentar la circularidad y la sostenibilidad en diversas redes de valor, así como los beneficios y desafíos en la implementación de la simbiosis industrial en diferentes contextos.
+
+Capítulo 3: Sin descanso para lo complejo: flujos de información, adaptación y emergencia en sistemas circulares de suministro.
+Busca construir sobre la teoría de sistemas complejos adaptativos (CAS) y la investigación de la economía circular para conceptualizar cómo los flujos de información entre actores pueden facilitar la aparición de un sistema de suministro circular.
+
+#### Sección del libro 2: El papel de la producción (Actor: Productores)
+
+Capítulos con enfoque en el diseño de productos, métodos de producción.
+
+
+Capítulo 4:Moldeando la transición de cadenas de suministro lineales a circulares.
+Utiliza ejemplos de casos para ilustrar las formas en que la gestión de la cadena de suministro se reinventa en la transición a un sistema económico circular.
+
+
+Capítulo 5: Modelos de Negocio Circulares: Un Enfoque de Red para Promover la Circularidad y la Creación de Valor desde la Perspectiva del Productor.
+Construye sobre un enfoque de teoría fundamentada y propone un nuevo marco para empresas que combinen ideas sobre modelos de negocio abiertos con circularidad.
+
+#### Sección del libro 3: El papel y los tipos de la logística inversa(Actores: carroñeros y descomponedores)
+
+Capítulos centrados en la recuperación y reventa de bienes usados, recuperación de materiales, transporte
+
+
+Capítulo 6:El impacto de las ubicaciones de reciclaje en el rendimiento de la cadena de suministro de circuito cerrado.
+La investigación utiliza análisis exploratorios de datos para analizar los resultados de simulaciones basadas en datos empíricos y tarifas de mercado relacionadas con los CLSC (cadenas de suministro de circuito cerrado) de textiles y ropa
+
+Capítulo 7:Teoría de las partes interesadas y las cadenas de suministro en la economía Circular
+Se basa en la teoría de las partes interesadas para identificar varios desafíos y riesgos que impiden a las empresas construir sistemas circulares sostenibles, y se centra en aumentar el número de carroñeros y descomponedores en el sistema para lograr un crecimiento sostenible.
+
+#### Sección del libro 4: El papel y tipos de los consumidores empresariales y minoristas (Actor: Consumidores) 
+
+Capítulos con enfoque en la aceptación del consumidor, acuerdos empresariales en la economía circular, marketing y aspectos de marca.
+
+
+Capítulo 8:De "Fin de camino" a nodo crítico: El papel de los "consumidores" finales en la configuración de la gestión de la cadena de suministro circular.
+Describe las tendencias económicas, sociales y ecológicas que motivan a los líderes y gerentes organizacionales a implementar modelos más CSC. Presenta ideas específicas sobre cómo los gerentes pueden aprovechar a los usuarios finales para cerrar, frenar, estrechar, intensificar y desmaterializar los procesos centrales de la cadena de suministro.
+
+Capítulo 9:Mercados Secundarios: Habilitando la Economía Circular
+Discute el papel del mercado secundario como un mecanismo importante para lograr una economía circular.
+
+#### Sección del libro 5: El papel de los flujos de información y financieros (Actor principal: Decompositores)
+
+Capítulos con enfoque en cómo las bases de datos y pasaportes de materiales, microcréditos, plataformas de intercambio, tecnología blockchain e inteligencia artificial permiten la circularidad.
+
+
+Capítulo 10:Tecnología blockchain y logística inversa.
+Proporciona una visión general de las posibles conexiones entre la tecnología blockchain y la economía circular desde una perspectiva de sostenibilidad, con un enfoque específico en la medición del rendimiento de las actividades de logística inversa.
+
+Capítulo 11:Hacia la sostenibilidad: Una revisión de modelos analíticos para cadenas de suministro circulares.
+Analiza la bibliografía existente sobre mejores prácticas disponibles y modelos cuantitativos de cadenas cadenas de suministro sostenibles (CSC) y ofrece una nueva definición de CSC.
+
+#### Sección del libro 6: El papel del contexto empresarial (responsables políticos, ONG, etc.)
+
+Capítulos con enfoque en cómo los incentivos y/o la legislación, el papel de las ONG y otros factores en el contexto empresarial permiten (o dificultan) el movimiento hacia la circularidad.
+
+
+Capítulo 12:Determinantes de la Economía Circular y el Desarrollo Sostenible de Países Europeos
+Consiste en modelos seleccionados de análisis de envoltura de datos (DEA) y utiliza su metodología para construir un sistema de clasificación basado en criterios seleccionados.
+
+Capítulo 13:Regulaciones que obstaculizan la economía circular.
+Se centra en las barreras regulatorias del reciclaje de residuos orgánicos en Dinamarca.
+
+#### Sección del libro 7: Lecciones aprendidas en el movimiento hacia una economía circular
+
+Capítulos con enfoque en historias de éxito y/o ejemplos/casos en los que la introducción de prácticas para avanzar hacia una economía circular falló o estuvo cerca de fallar; lo que se puede aprender.
+
+
+Capítulo 14: Aprendiendo a implementar la economía circular en el sector agroalimentario: una perspectiva multinivel.
+Aborda el tema de los niveles y escalas presentando y analizando tres casos complementarios en el sector agroalimentario. Incluye la necesidad de considerar el valor y el impacto en múltiples niveles y cómo las empresas y sus cadenas de suministro pueden contribuir a la escala de acción necesaria.
+
+Capítulo 15:Blanc de Gris, una granja urbana de hongos: lecciones de la aparición de un modelo de negocio circular.
+Destaca las dificultades de crear una simbiosis industrial basada en un relato etnográfico de BDG que incluye observaciones, entrevistas y una pasantía de cuatro meses en el negocio.
+
+Capítulo 16:Turismo circular:Un enfoque de destino
+Se centra en los siguientes cuatro temas: el establecimiento de una red turística y la colaboración, los cambios en las prácticas de los actores hacia un enfoque más circular, las iniciativas llevadas a cabo por actores públicos y privados, identificando qué prácticas son importantes para el turismo circular para el actor individual y para el destino en sí mismo.
+
+Capítulo 17: Contratación Pública Circular: Un Estudio de Caso de Servicios de Ropa de Trabajo y Lavandería
+Desarrolla una guía para la contratación pública sostenible enfocada en servicios de vestuario de trabajo y lavandería, y explora cómo esta guía ha sido utilizada en la práctica.
+
+Capítulo 18:Ejemplos de modelos de negocios circulares innovadores (CBMs) de la industria de la ropa y textiles.
+Los usuarios de materiales reciclados, los diseñadores de nuevas tecnologías y los facilitadores de redes de economía circular ilustran cómo las empresas contribuyen a un ecosistema circular en la industria de la ropa y textiles.
+
+Capítulo 19:Estudio de caso de Osklen: Los obstáculos de la moda sostenible y circular en Brasil.
+Muestra cómo Osklen, una marca de moda brasileña con 30 años de experiencia que se enfoca en la brasileñidad y la sostenibilidad, ha enfrentado desafíos en los últimos 10 años al liderar la adopción de algodón reciclado en sus productos.
+
+## Conclusión
+
+Los autores del libro pretendían llenar un vacío en las publicaciones relacionadas con la economía circular y los sistemas de valor, utilizando una óptica inspirada en la biomímesis. Están muy agradecidos a los autores que han contribuido al libro. El libro se divide en dos partes: Los capítulos 2-13 se centran en temas específicos relacionados con los sistemas de economía circular, mientras que los capítulos 14-19 ofrecen ejemplos prácticos y aplicaciones. El libro está dirigido tanto a un público orientado a la investigación como a un público práctico, y a lo largo de los distintos capítulos se ofrecen numerosas sugerencias para futuras investigaciones. Los estudios de casos pueden resultar especialmente útiles para empresas o debates educativos. En conjunto, el libro ofrece una perspectiva sistémica del pensamiento y la práctica contemporáneos de la economía circular.
